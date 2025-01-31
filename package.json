@@ -1,6 +1,6 @@
 {
   "name": "com.firsttry.customlocalization",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Custom Localization",
   "unity": "2022.1",
   "dependencies": {
