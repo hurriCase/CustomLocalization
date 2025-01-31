@@ -11,7 +11,7 @@ namespace CustomLocalization.Editor
 
         private static LocalizationSettings SettingsBase => LocalizationSettings.instance;
 
-        [MenuItem("Project/Localization/Settings")]
+        [MenuItem("--Project--/Localization/Settings")]
         internal static void ShowWindow()
         {
             GetWindow<LocalizationSettingsWindow>("Localization Settings");
