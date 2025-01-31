@@ -17,7 +17,7 @@ namespace CustomLocalization.Editor
             GetWindow<LocalizationSettingsWindow>("Localization Settings");
         }
 
-        [MenuItem("Project/Localization/Reset")]
+        [MenuItem("--Project--/Localization/Reset")]
         internal static void ResetSettings()
         {
             if (EditorUtility.DisplayDialog(
