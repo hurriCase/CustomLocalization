@@ -9,12 +9,12 @@ namespace CustomLocalization.Runtime
     /// <summary>
     ///     Localization manager.
     /// </summary>
-    internal static class LocalizationManager
+    public static class LocalizationManager
     {
         /// <summary>
         ///     Fired when localization changed.
         /// </summary>
-        internal static event Action OnLocalizationChanged = () => { };
+        public static event Action OnLocalizationChanged = () => { };
 
         private static readonly Dictionary<string, Dictionary<string, string>> _dictionary = new();
         private static string _language = "English";
@@ -22,7 +22,7 @@ namespace CustomLocalization.Runtime
         /// <summary>
         ///     Get or set language.
         /// </summary>
-        private static string Language
+        public static string Language
         {
             get => _language;
             set
@@ -95,13 +95,13 @@ namespace CustomLocalization.Runtime
         /// <summary>
         ///     Check if a key exists in localization.
         /// </summary>
-        internal static bool HasKey(string localizationKey) =>
+        public static bool HasKey(string localizationKey) =>
             _dictionary.ContainsKey(Language) && _dictionary[Language].ContainsKey(localizationKey);
 
         /// <summary>
         ///     Get localized value by localization key.
         /// </summary>
-        internal static string Localize(string localizationKey)
+        public static string Localize(string localizationKey)
         {
             if (_dictionary.Count == 0) Read();
 
@@ -126,7 +126,7 @@ namespace CustomLocalization.Runtime
         /// <summary>
         ///     Get localized value by localization key.
         /// </summary>
-        internal static string Localize(string localizationKey, params object[] args)
+        public static string Localize(string localizationKey, params object[] args)
         {
             var pattern = Localize(localizationKey);
 
