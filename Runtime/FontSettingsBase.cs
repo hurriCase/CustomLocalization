@@ -2,9 +2,9 @@
 
 namespace CustomLocalization.Runtime
 {
-    public abstract class FontSettings : ScriptableObject
+    public abstract class FontSettingsBase : ScriptableObject
     {
-        internal static FontSettings Instance { get; private set; }
+        internal static FontSettingsBase Instance { get; private set; }
 
         private void OnEnable() => Instance ??= this;
 

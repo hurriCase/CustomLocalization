@@ -136,7 +136,7 @@ namespace CustomLocalization.Runtime
         public static bool TryGetFontForLanguage(string language, out LanguageFontMapping fontMapping)
         {
             fontMapping = null;
-            var fontMappings = FontSettings.Instance.FontMappings;
+            var fontMappings = FontSettingsBase.Instance.FontMappings;
             if (fontMappings == null)
                 return false;
 
