@@ -18,3 +18,6 @@
 - Font override.
 ### Delete
 - Useless text localization component.
+## [1.1.1] - 2025-02-1
+### Refactor
+- Font override.
