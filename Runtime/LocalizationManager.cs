@@ -137,10 +137,10 @@ namespace CustomLocalization.Runtime
         {
             fontMapping = null;
 
-            if (FontSettingsBase.Instance is null)
+            if (LocalizationSettings.Instance is null)
                 return false;
 
-            var fontMappings = FontSettingsBase.Instance.FontMappings;
+            var fontMappings = LocalizationSettings.Instance.FontMappings;
             if (fontMappings == null)
                 return false;
 

@@ -10,6 +10,7 @@ namespace CustomLocalization.Editor
     internal sealed class LocalizationSettingsWindow : EditorWindow
     {
         private static SerializedObject _serializedObject;
+        private Vector2 _scrollPosition;
 
         private static LocalizationSettings SettingsBase => LocalizationSettings.Instance;
 
@@ -38,6 +39,12 @@ namespace CustomLocalization.Editor
             DisplaySheets();
             SettingsBase.SaveFolder =
                 EditorGUILayout.ObjectField("Save Folder", SettingsBase.SaveFolder, typeof(Object), false);
+
+            var fontMappingsProperty =
+                _serializedObject.FindProperty(nameof(SettingsBase.FontMappings).ConvertToBackingField());
+
+            EditorGUILayout.PropertyField(fontMappingsProperty, includeChildren: true);
+
             SettingsBase.DisplayButtons();
             SettingsBase.DisplayWarnings();
 
@@ -92,7 +99,11 @@ namespace CustomLocalization.Editor
 
         private void OnGUI()
         {
+            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+
             MakeSettingsWindow();
+
+            EditorGUILayout.EndScrollView();
         }
     }
 }

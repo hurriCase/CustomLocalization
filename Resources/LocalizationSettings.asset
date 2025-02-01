@@ -12,3 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63817d93022759543b57e795c78efe11, type: 3}
   m_Name: LocalizationSettings
   m_EditorClassIdentifier: 
+  <TableId>k__BackingField: 17I9-TOBuoPkijTnwc1y82ikExUI_lmSpAWPF6pC4sBM
+  <Sheets>k__BackingField:
+  - <Name>k__BackingField: UI
+    <Id>k__BackingField: 0
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: 8d86d576b40875c4db3f98eb906997cf, type: 3}
+  - <Name>k__BackingField: Active Abilities
+    <Id>k__BackingField: 1691114286
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: 61bb6a7aecdb39c44bc446d8161f4575, type: 3}
+  - <Name>k__BackingField: Evolution
+    <Id>k__BackingField: 1190554333
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: be8fb70d75b6abf48a9759dcccec016f, type: 3}
+  - <Name>k__BackingField: Passive Abilities
+    <Id>k__BackingField: 623558459
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: b329fabd883da3842a3ab51d0b633b2f, type: 3}
+  - <Name>k__BackingField: Perks
+    <Id>k__BackingField: 1651011917
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: cea4a7dc79957fc4bbf001ca23379264, type: 3}
+  - <Name>k__BackingField: Upgrades
+    <Id>k__BackingField: 951486223
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: 735ffe480b82d2e4c9f04594d225ee56, type: 3}
+  - <Name>k__BackingField: Characters
+    <Id>k__BackingField: 825652138
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: 9660e08b4974c4f4592853d9393532ec, type: 3}
+  - <Name>k__BackingField: Bossfight
+    <Id>k__BackingField: 389063590
+    <TextAsset>k__BackingField: {fileID: 4900000, guid: 27ae1778e76a12748a65d73cab1df7a2, type: 3}
+  <SaveFolder>k__BackingField: {fileID: 102900000, guid: f6d3c11afcdfbb4419993a8b0718aed1, type: 3}

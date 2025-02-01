@@ -34,6 +34,7 @@ namespace CustomLocalization.Runtime
         [field: SerializeField] internal List<Sheet> Sheets { get; set; } = new();
 
         [field: SerializeField] internal Object SaveFolder { get; set; }
+        [field: SerializeField] public LanguageFontMapping[] FontMappings { get; private set; }
 
         private static DateTime Timestamp { get; set; }
 
