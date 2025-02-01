@@ -33,3 +33,6 @@
 ## [1.1.5] - 2025-02-1
 ### Refactor
 - Errors on build.
+## [1.1.6] - 2025-02-1
+### Fix
+- Resource folder was renamed to resources.
