@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CustomLocalization.Runtime
 {
     [Serializable]
-    internal class LanguageFontMapping
+    public class LanguageFontMapping
     {
         [SerializeField] internal string Language;
         [SerializeField] internal TMP_FontAsset Font;

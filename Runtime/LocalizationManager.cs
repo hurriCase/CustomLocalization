@@ -133,6 +133,25 @@ namespace CustomLocalization.Runtime
             return string.Format(pattern, args);
         }
 
+        public static bool TryGetFontForLanguage(string language, out LanguageFontMapping fontMapping)
+        {
+            fontMapping = null;
+            var fontMappings = FontSettings.instance.FontMappings;
+            if (fontMappings == null)
+                return false;
+
+            foreach (var mapping in fontMappings)
+            {
+                if (mapping.Language.Equals(language, StringComparison.OrdinalIgnoreCase) is false)
+                    continue;
+
+                fontMapping = mapping;
+                return true;
+            }
+
+            return false;
+        }
+
         private static List<string> GetLines(string text)
         {
             text = text.Replace("\r\n", "\n").Replace("\"\"", "[_quote_]");

@@ -39,7 +39,7 @@ namespace CustomLocalization.Runtime
             _textComponent.text = LocalizationManager.Localize(LocalizationKey);
 
             var isFontSpecified =
-                FontSettings.instance.TryGetFontForLanguage(LocalizationManager.Language, out var languageFontMapping);
+                LocalizationManager.TryGetFontForLanguage(LocalizationManager.Language, out var languageFontMapping);
 
             _textComponent.font = isFontSpecified ? languageFontMapping.Font : _originalFont;
         }
