@@ -1,4 +1,6 @@
-﻿using CustomLocalization.Runtime;
+﻿using System.Linq;
+using CustomExtensions.Runtime;
+using CustomLocalization.Runtime;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -38,16 +40,19 @@ namespace CustomLocalization.Editor
                 EditorGUILayout.ObjectField("Save Folder", SettingsBase.SaveFolder, typeof(Object), false);
             SettingsBase.DisplayButtons();
             SettingsBase.DisplayWarnings();
+
+            _serializedObject.ApplyModifiedProperties();
         }
 
         private static void DisplaySheets()
         {
-            if (_serializedObject == null || _serializedObject.targetObject is null)
+            if (_serializedObject?.targetObject is null)
                 _serializedObject = new SerializedObject(SettingsBase);
             else
                 _serializedObject.Update();
 
-            var property = _serializedObject.FindProperty("Sheets");
+            var property = _serializedObject
+                .FindProperty(nameof(LocalizationSettings.Instance.Sheets).ConvertToBackingField());
 
             if (property == null)
                 return;
@@ -71,9 +76,10 @@ namespace CustomLocalization.Editor
                 {
                     SettingsBase.Sheets.Add(new Sheet
                     {
-                        Name = property.FindPropertyRelative("Name").stringValue,
-                        Id = property.FindPropertyRelative("Id").longValue,
-                        TextAsset = property.FindPropertyRelative("TextAsset").objectReferenceValue as TextAsset
+                        Name = property.FindPropertyRelative(nameof(Sheet.Name).ConvertToBackingField()).stringValue,
+                        Id = property.FindPropertyRelative(nameof(Sheet.Id).ConvertToBackingField()).longValue,
+                        TextAsset = property.FindPropertyRelative(nameof(Sheet.TextAsset)
+                            .ConvertToBackingField()).objectReferenceValue as TextAsset
                     });
 
                     if (i < lastIndex)

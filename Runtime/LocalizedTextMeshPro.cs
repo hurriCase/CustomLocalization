@@ -44,7 +44,6 @@ namespace CustomLocalization.Runtime
             _textComponent.font = isFontSpecified ? languageFontMapping.Font : _originalFont;
         }
 
-
         public void ResetFont()
         {
             _textComponent ??= GetComponent<TMP_Text>();

@@ -28,11 +28,12 @@ namespace CustomLocalization.Runtime
         ///     In this case, Table Id is "1RvKY3VE_y5FPhEECCa5dv4F7REJ7rBtGzQg9Z_B_DE4" and Sheet Id is "331980525" (the gid
         ///     parameter).
         /// </summary>
+        [field: SerializeField]
         internal string TableId { get; set; }
 
-        internal List<Sheet> Sheets = new();
+        [field: SerializeField] internal List<Sheet> Sheets { get; set; } = new();
 
-        internal Object SaveFolder { get; set; }
+        [field: SerializeField] internal Object SaveFolder { get; set; }
 
         private static DateTime Timestamp { get; set; }
 

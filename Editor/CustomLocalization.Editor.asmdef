@@ -2,7 +2,8 @@
     "name": "CustomLocalization.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:55a94031d098e3f4ca8ce54ccfa17d36"
+        "GUID:55a94031d098e3f4ca8ce54ccfa17d36",
+        "GUID:b36ad6d0e92d8e54f8bf12cf7317743b"
     ],
     "includePlatforms": [
         "Editor"
