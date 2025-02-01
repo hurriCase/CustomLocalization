@@ -36,3 +36,6 @@
 ## [1.1.6] - 2025-02-1
 ### Fix
 - Resource folder was renamed to resources.
+## [1.1.7] - 2025-02-1
+### Fix
+- Exclude editor script from other platforms.
