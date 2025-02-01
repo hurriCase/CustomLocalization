@@ -24,3 +24,6 @@
 ## [1.1.2] - 2025-02-1
 ### Fix
 - Access modifier from internal to public.
+## [1.1.3] - 2025-02-1
+### Refactor
+- Font settings.
