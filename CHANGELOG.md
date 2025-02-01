@@ -27,6 +27,9 @@
 ## [1.1.3] - 2025-02-1
 ### Refactor
 - Font settings.
-## [1.1.3] - 2025-02-1
+## [1.1.4] - 2025-02-1
 ### Refactor
 - Changed name from FontSettings.cs to FontSettingsBase.cs.
+## [1.1.5] - 2025-02-1
+### Refactor
+- Errors on build.
