@@ -10,3 +10,6 @@
 ## [1.0.3] - 2025-01-31
 ### Feature
 - LocalizedTestMeshPro.
+## [1.0.4] - 2025-02-1
+### Fix
+- Changed accessor modifiers.
