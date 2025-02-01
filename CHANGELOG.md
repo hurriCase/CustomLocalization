@@ -13,3 +13,8 @@
 ## [1.0.4] - 2025-02-1
 ### Fix
 - Changed accessor modifiers.
+## [1.1.0] - 2025-02-1
+### Feature
+- Font override.
+### Delete
+- Useless text localization component.
