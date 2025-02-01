@@ -6,8 +6,8 @@ using UnityEngine;
 namespace CustomLocalization.Runtime
 {
     [CreateAssetMenu(fileName = "FontSettings", menuName = "Localization/FontSettings", order = 1)]
-    internal sealed class FontSettings : ScriptableSingleton<FontSettings>
+    public sealed class FontSettings : ScriptableSingleton<FontSettings>
     {
-        [field: SerializeField] internal LanguageFontMapping[] FontMappings { get; private set; }
+        [field: SerializeField] public LanguageFontMapping[] FontMappings { get; private set; }
     }
 }

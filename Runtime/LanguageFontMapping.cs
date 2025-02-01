@@ -7,7 +7,7 @@ namespace CustomLocalization.Runtime
     [Serializable]
     public class LanguageFontMapping
     {
-        [SerializeField] internal string Language;
-        [SerializeField] internal TMP_FontAsset Font;
+        [SerializeField] public string Language;
+        [SerializeField] public TMP_FontAsset Font;
     }
 }
