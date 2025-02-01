@@ -21,3 +21,6 @@
 ## [1.1.1] - 2025-02-1
 ### Refactor
 - Font override.
+## [1.1.2] - 2025-02-1
+### Fix
+- Access modifier from internal to public.
