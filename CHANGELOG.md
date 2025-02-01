@@ -42,3 +42,6 @@
 ## [1.1.8] - 2025-02-1
 ### Fix
 - Fix sheets downloading.
+## [1.1.9] - 2025-02-1
+### Refactor
+- Combine fontMapping and localization settings.
