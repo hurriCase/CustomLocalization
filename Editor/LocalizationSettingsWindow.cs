@@ -9,7 +9,7 @@ namespace CustomLocalization.Editor
     {
         private static SerializedObject _serializedObject;
 
-        private static LocalizationSettings SettingsBase => LocalizationSettings.instance;
+        private static LocalizationSettings SettingsBase => LocalizationSettings.Instance;
 
         [MenuItem("--Project--/Localization/Settings")]
         internal static void ShowWindow()
@@ -25,7 +25,7 @@ namespace CustomLocalization.Editor
                     "Do you want to reset settings?",
                     "Yes",
                     "No"))
-                LocalizationSettings.instance.Reset();
+                LocalizationSettings.Instance.Reset();
         }
 
         private void MakeSettingsWindow()

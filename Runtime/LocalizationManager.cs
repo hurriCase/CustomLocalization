@@ -46,7 +46,7 @@ namespace CustomLocalization.Runtime
 
             var keys = new List<string>();
 
-            foreach (var sheet in LocalizationSettings.instance.Sheets)
+            foreach (var sheet in LocalizationSettings.Instance.Sheets)
             {
                 var textAsset = sheet.TextAsset;
                 var lines = GetLines(textAsset.text);

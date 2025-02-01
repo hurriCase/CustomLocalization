@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+#if UNITY_EDITOR
 using Unity.EditorCoroutines.Editor;
+#endif
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,9 +15,12 @@ using Object = UnityEngine.Object;
 
 namespace CustomLocalization.Runtime
 {
-    [CreateAssetMenu(fileName = "LocalizationSettings", menuName = "Localization/Settings")]
-    internal sealed class LocalizationSettings : ScriptableSingleton<LocalizationSettings>
+    internal sealed class LocalizationSettings : ScriptableObject
     {
+        internal static LocalizationSettings Instance => _instance ?? (_instance = LoadSettings());
+
+        private static LocalizationSettings _instance;
+
         /// <summary>
         ///     Table Id on Google Sheets.
         ///     Let's say your table has the following URL
@@ -36,15 +41,24 @@ namespace CustomLocalization.Runtime
 
         private static LocalizationSettings LoadSettings()
         {
-            const string path = "Assets/SimpleLocalization/Resources/LocalizationSettings.asset";
+            const string path = "Assets/CustomLocalization/Resources/LocalizationSettings.asset";
 
             var settings = Resources.Load<LocalizationSettings>(Path.GetFileNameWithoutExtension(path));
 
             if (settings)
                 return settings;
 
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
+
+            settings = CreateInstance<LocalizationSettings>();
+
+            AssetDatabase.CreateAsset(settings, path);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
+#else
             throw new Exception($"Localization settings not found: {path}");
+
 #endif
 
             return settings;
@@ -60,7 +74,9 @@ namespace CustomLocalization.Runtime
 
         private void DownloadGoogleSheets(Action callback = null)
         {
+#if UNITY_EDITOR
             EditorCoroutineUtility.StartCoroutineOwnerless(DownloadGoogleSheetsCoroutine(callback));
+#endif
         }
 
         private IEnumerator DownloadGoogleSheetsCoroutine(Action callback = null, bool silent = false)
@@ -166,8 +182,10 @@ namespace CustomLocalization.Runtime
 
         private void ResolveGoogleSheets()
         {
+#if UNITY_EDITOR
             EditorCoroutineUtility.StartCoroutineOwnerless(ResolveGoogleSheetsCoroutine());
             return;
+#endif
 
             IEnumerator ResolveGoogleSheetsCoroutine()
             {
