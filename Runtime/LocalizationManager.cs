@@ -99,6 +99,12 @@ namespace CustomLocalization.Runtime
             _dictionary.ContainsKey(Language) && _dictionary[Language].ContainsKey(localizationKey);
 
         /// <summary>
+        ///     Check if a language exists in localization.
+        /// </summary>
+        public static bool HasLanguage(string language) =>
+            _dictionary.ContainsKey(language);
+
+        /// <summary>
         ///     Get localized value by localization key.
         /// </summary>
         public static string Localize(string localizationKey)
