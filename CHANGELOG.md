@@ -45,3 +45,6 @@
 ## [1.1.9] - 2025-02-1
 ### Refactor
 - Combine fontMapping and localization settings.
+## [1.2.0] - 2025-02-3
+### feat
+- HasLanguage method.
