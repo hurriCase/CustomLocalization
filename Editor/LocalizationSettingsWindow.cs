@@ -1,9 +1,7 @@
-﻿using System.Linq;
-using CustomExtensions.Runtime;
+﻿using CustomExtensions.Runtime;
 using CustomLocalization.Runtime;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace CustomLocalization.Editor
 {

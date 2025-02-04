@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using CustomExtensions.Runtime;
 using Newtonsoft.Json;
 #if UNITY_EDITOR
 using Unity.EditorCoroutines.Editor;
+using CustomExtensions.Editor;
 #endif
 using UnityEditor;
 using UnityEngine;
