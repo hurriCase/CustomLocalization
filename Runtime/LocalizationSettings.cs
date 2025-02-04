@@ -53,8 +53,10 @@ namespace CustomLocalization.Runtime
 
         private static LocalizationSettings LoadSettings()
         {
+            var assetPath = $"{_localizationSettingsFolderPath}/{_localizationSettingsAssetName}";
+
             var settings = Resources.Load<LocalizationSettings>(
-                Path.GetFileNameWithoutExtension(_localizationSettingsFolderPath));
+                Path.GetFileNameWithoutExtension(assetPath));
 
             if (settings)
                 return settings;
@@ -65,8 +67,6 @@ namespace CustomLocalization.Runtime
 
             if (AssetDatabase.IsValidFolder(_localizationSettingsFolderPath) is false)
                 _localizationSettingsFolderPath.CreateFolder();
-
-            var assetPath = $"{_localizationSettingsFolderPath}/{_localizationSettingsAssetName}";
 
             AssetDatabase.CreateAsset(settings, assetPath);
             AssetDatabase.SaveAssets();
