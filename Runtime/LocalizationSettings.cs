@@ -73,7 +73,7 @@ namespace CustomLocalization.Runtime
             AssetDatabase.Refresh();
 
 #else
-            throw new Exception($"Localization settings not found: {_localizationSeettingsFolderPath}");
+            throw new Exception($"Localization settings not found, at path: {assetPath}");
 
 #endif
 
