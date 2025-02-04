@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using CustomExtensions.Runtime;
 using Newtonsoft.Json;
 #if UNITY_EDITOR
 using Unity.EditorCoroutines.Editor;
@@ -33,7 +34,6 @@ namespace CustomLocalization.Runtime
 
         [field: SerializeField] internal List<Sheet> Sheets { get; set; } = new();
 
-        [field: SerializeField] internal Object SaveFolder { get; set; }
         [field: SerializeField] public LanguageFontMapping[] FontMappings { get; private set; }
 
         private static DateTime Timestamp { get; set; }
@@ -41,11 +41,20 @@ namespace CustomLocalization.Runtime
         private static readonly string _urlPattern =
             "https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}";
 
+        private static readonly string _resourcesFolderPath =
+            "Assets/CustomLocalization/Resources/Localization";
+
+        private static readonly string _localizationSettingsFolderPath =
+            "Assets/CustomLocalization/Resources";
+
+        private static readonly string _localizationSettingsAssetName = "LocalizationSettings.asset";
+
+        private Object _saveFolder;
+
         private static LocalizationSettings LoadSettings()
         {
-            const string path = "Assets/CustomLocalization/Resources/LocalizationSettings.asset";
-
-            var settings = Resources.Load<LocalizationSettings>(Path.GetFileNameWithoutExtension(path));
+            var settings = Resources.Load<LocalizationSettings>(
+                Path.GetFileNameWithoutExtension(_localizationSettingsFolderPath));
 
             if (settings)
                 return settings;
@@ -54,12 +63,17 @@ namespace CustomLocalization.Runtime
 
             settings = CreateInstance<LocalizationSettings>();
 
-            AssetDatabase.CreateAsset(settings, path);
+            if (AssetDatabase.IsValidFolder(_localizationSettingsFolderPath) is false)
+                _localizationSettingsFolderPath.CreateFolder();
+
+            var assetPath = $"{_localizationSettingsFolderPath}/{_localizationSettingsAssetName}";
+
+            AssetDatabase.CreateAsset(settings, assetPath);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
 #else
-            throw new Exception($"Localization settings not found: {path}");
+            throw new Exception($"Localization settings not found: {_localizationSeettingsFolderPath}");
 
 #endif
 
@@ -70,7 +84,7 @@ namespace CustomLocalization.Runtime
 
         private void Awake()
         {
-            if (string.IsNullOrEmpty(TableId) && Sheets == null && SaveFolder == null)
+            if (Sheets == null || _saveFolder == null)
                 Reset();
         }
 
@@ -89,10 +103,15 @@ namespace CustomLocalization.Runtime
                 yield break;
             }
 
-            if (SaveFolder == null)
+            if (_saveFolder == null)
             {
-                EditorUtility.DisplayDialog("Error", "Save Folder is not set.", "OK");
-                yield break;
+                Reset();
+
+                if (_saveFolder == null)
+                {
+                    EditorUtility.DisplayDialog("Error", "Save Folder is not set.", "OK");
+                    yield break;
+                }
             }
 
             if (Sheets.Count == 0)
@@ -131,7 +150,7 @@ namespace CustomLocalization.Runtime
 
                 if (string.IsNullOrEmpty(error))
                 {
-                    var path = Path.Combine(AssetDatabase.GetAssetPath(SaveFolder), sheet.Name + ".csv");
+                    var path = Path.Combine(AssetDatabase.GetAssetPath(_saveFolder), sheet.Name + ".csv");
 
                     File.WriteAllBytes(path, request.downloadHandler.data);
                     AssetDatabase.Refresh();
@@ -162,7 +181,7 @@ namespace CustomLocalization.Runtime
 
             void ClearSaveFolder()
             {
-                var files = Directory.GetFiles(AssetDatabase.GetAssetPath(SaveFolder));
+                var files = Directory.GetFiles(AssetDatabase.GetAssetPath(_saveFolder));
 
                 foreach (var file in files)
                     File.Delete(file);
@@ -179,7 +198,10 @@ namespace CustomLocalization.Runtime
 
         internal void Reset()
         {
-            SaveFolder = AssetDatabase.LoadAssetAtPath<Object>(@"Assets\SimpleLocalization\Resources\Localization");
+            if (AssetDatabase.IsValidFolder(_resourcesFolderPath) is false)
+                _resourcesFolderPath.CreateFolder();
+
+            _saveFolder = AssetDatabase.LoadAssetAtPath<Object>(_resourcesFolderPath);
         }
 
         private void ResolveGoogleSheets()
@@ -277,7 +299,7 @@ namespace CustomLocalization.Runtime
         {
             if (TableId == "")
                 EditorGUILayout.HelpBox("Table Id is empty.", MessageType.Warning);
-            else if (SaveFolder == null)
+            else if (_saveFolder == null)
                 EditorGUILayout.HelpBox("Save Folder is not set.", MessageType.Warning);
             else if (Sheets.Count == 0)
                 EditorGUILayout.HelpBox("Sheets are empty.", MessageType.Warning);

@@ -37,8 +37,6 @@ namespace CustomLocalization.Editor
             SettingsBase.DisplayHelp();
             SettingsBase.TableId = EditorGUILayout.TextField("Table Id", SettingsBase.TableId, GUILayout.MinWidth(200));
             DisplaySheets();
-            SettingsBase.SaveFolder =
-                EditorGUILayout.ObjectField("Save Folder", SettingsBase.SaveFolder, typeof(Object), false);
 
             var fontMappingsProperty =
                 _serializedObject.FindProperty(nameof(SettingsBase.FontMappings).ConvertToBackingField());
