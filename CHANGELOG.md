@@ -57,3 +57,6 @@
 ## [1.2.3] - 2025-02-04
 ### fix
 - Started using editor create folder extension.
+## [1.2.4] - 2025-02-04
+### fix
+- Wrong asset path in the exception.
