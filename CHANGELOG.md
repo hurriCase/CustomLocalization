@@ -54,3 +54,6 @@
 ## [1.2.2] - 2025-02-04
 ### fix
 - Wrong asset path for LocalizationSettings.cs.
+## [1.2.3] - 2025-02-04
+### fix
+- Started using editor create folder extension.
