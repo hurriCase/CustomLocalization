@@ -1,4 +1,4 @@
-﻿using CustomExtensions.Runtime;
+﻿using CustomExtensions.Editor;
 using CustomLocalization.Runtime;
 using UnityEditor;
 using UnityEngine;
